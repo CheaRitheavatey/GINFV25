@@ -8,10 +8,10 @@ const ControlPanel = ({onRandomize, onStart, selectAlgo, onAlgoChange, isAnimati
     ]
 
     return (
-        <div className="div">
-            <div className="div">
-                <button className="btn" onClick={onRandomize}>Randomize</button>
-                <button className="btn" onClick={onStart}>Play</button>
+        <div className="control-panel">
+            <div className="btn-group">
+                <button className="btn" onClick={onRandomize}>Random array</button>
+                <button className={`btn ${isAnimating ? 'active' : ''}`} onClick={onStart}>Play</button>
             </div>
 
             <div className="div">
@@ -22,11 +22,12 @@ const ControlPanel = ({onRandomize, onStart, selectAlgo, onAlgoChange, isAnimati
                         {algorithm.map(n => (
                             <option key={n.value} value={n.value}>{n.label}</option>
                         ))}
-                    </select>
+                    </select> 
                 </div>
             </div>
 
             {/* for speed here */}
+            <SpeedControl speed={speed} onChange={onSpeedChange} disable={isAnimating}></SpeedControl>
         </div>
     )
 }
