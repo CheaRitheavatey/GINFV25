@@ -1,6 +1,6 @@
 // install radix-ui/react-select
 import * as SelectPrimitive from '@radix-ui/react-select'
-import { cn } from 'c:/Users/ACER-PC/Downloads/Algorithm Visualizer UI Design/src/app/components/ui/utils'
+import cn from './utils'
 import {CheckIcon, ChevronUpIcon, ChevronDownIcon} from "lucide-react"
 
 function Select({...prop}) {

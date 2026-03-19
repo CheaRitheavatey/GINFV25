@@ -1,35 +1,32 @@
-import React from "react";
-import SpeedControl from './SpeedControl'
-const ControlPanel = ({onRandomize, onStart, selectAlgo, onAlgoChange, isAnimating, speed, onSpeedChange}) => {
-    const algorithm = [
-        {value: 'bubble', label: 'Bubble sort'},
-        {value: 'selection', label: 'Selection sort'},
-        {value: 'insertion', label: 'Insertion sort'}
-    ]
+import { SelectContent, SelectItem, SelectTrigger, SelectValue } from "@radix-ui/react-select"
+import { Select } from "./sub_components/Select"
 
+function ControlPanel({
+    selectedAlgo,
+    onChangeSelectedAlgo,
+    isRunning
+}) {
     return (
-        <div className="control-panel">
-            <div className="btn-group">
-                <button className="btn" onClick={onRandomize}>Random array</button>
-                <button className={`btn ${isAnimating ? 'active' : ''}`} onClick={onStart}>Play</button>
-            </div>
+        <>
+        {/* drop down for select algo: have label and the dropdown */}
+        <div>
+            <label htmlFor="">Algorithm:</label>
+            <Select value={selectedAlgo} onValueChange={onChangeSelectedAlgo} disable={isRunning}>
+                <SelectTrigger className="">
+                    <SelectValue></SelectValue>
+                </SelectTrigger>
 
-            <div className="div">
-                <label htmlFor="">algorithm</label>
-                <div className="dropdown">
-                    {/* map key value of algo */}
-                    <select name="" id="" value={selectAlgo} onChange={(e) => onAlgoChange(e.target.value)}>
-                        {algorithm.map(n => (
-                            <option key={n.value} value={n.value}>{n.label}</option>
-                        ))}
-                    </select> 
-                </div>
-            </div>
 
-            {/* for speed here */}
-            <SpeedControl speed={speed} onChange={onSpeedChange} disable={isAnimating}></SpeedControl>
+                <SelectContent className="">
+                    <SelectItem value="bubble">Bubble Sort</SelectItem>
+                    <SelectItem value="quick">Quick Sort</SelectItem>
+                    <SelectItem value="merge">Merge Sort</SelectItem>
+                    <SelectItem value="insertion">Insertion Sort</SelectItem>
+                    <SelectItem value="selection">Selection Sort</SelectItem>
+                </SelectContent>
+            </Select>
         </div>
+        </>
     )
 }
-
-export default ControlPanel;
+export default ControlPanel
