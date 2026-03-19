@@ -13,13 +13,13 @@ export function CodePanel({ currentLine, algorithm }) {
       if (index !== -1) {
         if (index > 0) {
           parts.push(
-            <span key={`text-${keyIndex++}`} className="text-slate-300">
+            <span key={`text-${keyIndex++}`} className="code-text">
               {remaining.substring(0, index)}
             </span>
           );
         }
         parts.push(
-          <span key={`keyword-${keyIndex++}`} className="text-[#f472b6]">
+          <span key={`keyword-${keyIndex++}`} className="code-keyword">
             {keyword}
           </span>
         );
@@ -32,13 +32,13 @@ export function CodePanel({ currentLine, algorithm }) {
       const index = remaining.indexOf(functionMatch[1]);
       if (index > 0) {
         parts.push(
-          <span key={`pre-func-${keyIndex++}`} className="text-slate-300">
+          <span key={`pre-func-${keyIndex++}`} className="code-text">
             {remaining.substring(0, index)}
           </span>
         );
       }
       parts.push(
-        <span key={`func-${keyIndex++}`} className="text-[#4ade80]">
+        <span key={`func-${keyIndex++}`} className="code-function">
           {functionMatch[1]}
         </span>
       );
@@ -47,13 +47,13 @@ export function CodePanel({ currentLine, algorithm }) {
 
     if (remaining) {
       parts.push(
-        <span key={`rest-${keyIndex++}`} className="text-slate-300">
+        <span key={`rest-${keyIndex++}`} className="code-text">
           {remaining}
         </span>
       );
     }
 
-    return parts.length > 0 ? parts : <span className="text-slate-300">{code}</span>;
+    return parts.length > 0 ? parts : <span className="code-text">{code}</span>;
   };
 
   return (
