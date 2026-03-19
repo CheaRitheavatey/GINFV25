@@ -28,102 +28,100 @@ export function ControlPanel({
 
   return (
     <div className="control-panel">
-      <div className="control-panel-inner">
-        {/* Algorithm Selector */}
-        <div className="control-group">
-          <label className="control-label">Algorithm:</label>
-          <div className="custom-select">
-            <button
-              onClick={() => !isRunning && setIsOpen(!isOpen)}
-              disabled={isRunning}
-              className="custom-select-trigger"
-            >
-              {selectedLabel}
-              <ChevronDown className="custom-select-icon" />
-            </button>
-            {isOpen && !isRunning && (
-              <>
-                <div className="custom-select-overlay" onClick={() => setIsOpen(false)} />
-                <div className="custom-select-dropdown">
-                  {algorithms.map((algo) => (
-                    <button
-                      key={algo.value}
-                      onClick={() => {
-                        onAlgorithmChange(algo.value);
-                        setIsOpen(false);
-                      }}
-                      className="custom-select-item"
-                    >
-                      {algo.label}
-                    </button>
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-
-        {/* Control Buttons */}
-        <div className="button-group">
+      {/* Algorithm Selector */}
+      <div className="control-group">
+        <label className="control-label">Algorithm:</label>
+        <div className="custom-select">
           <button
-            onClick={onGenerateArray}
+            onClick={() => !isRunning && setIsOpen(!isOpen)}
             disabled={isRunning}
-            className="btn btn-generate"
+            className="custom-select-trigger"
           >
-            <Shuffle className="btn-icon" />
-            Generate New Array
+            {selectedLabel}
+            <ChevronDown className="custom-select-icon" />
           </button>
-          <button onClick={onStart} className="btn btn-start">
-            {isPaused ? (
-              <>
-                <Play className="btn-icon" />
-                Resume
-              </>
-            ) : isRunning ? (
-              <>
-                <Pause className="btn-icon" />
-                Pause
-              </>
-            ) : (
-              <>
-                <Play className="btn-icon" />
-                Start
-              </>
-            )}
-          </button>
-          {(isRunning || isPaused) && (
-            <button onClick={onReset} className="btn btn-reset">
-              <RotateCcw className="btn-icon" />
-              Reset
-            </button>
+          {isOpen && !isRunning && (
+            <>
+              <div className="custom-select-overlay" onClick={() => setIsOpen(false)} />
+              <div className="custom-select-dropdown">
+                {algorithms.map((algo) => (
+                  <button
+                    key={algo.value}
+                    onClick={() => {
+                      onAlgorithmChange(algo.value);
+                      setIsOpen(false);
+                    }}
+                    className="custom-select-item"
+                  >
+                    {algo.label}
+                  </button>
+                ))}
+              </div>
+            </>
           )}
         </div>
+      </div>
 
-        {/* Speed Slider */}
-        <div className="speed-slider-group">
-          <label className="control-label">Animation Speed:</label>
-          <input
-            type="range"
-            min="1"
-            max="10"
-            value={animationSpeed}
-            onChange={(e) => onSpeedChange([parseInt(e.target.value)])}
-            className="speed-slider"
-          />
-          <span className="speed-value">{animationSpeed}x</span>
+      {/* Control Buttons */}
+      <div className="buttons-group">
+        <button
+          onClick={onGenerateArray}
+          disabled={isRunning}
+          className="control-button generate-button"
+        >
+          <Shuffle className="btn-icon" />
+          Generate New Array
+        </button>
+        <button onClick={onStart} className="control-button start-button">
+          {isPaused ? (
+            <>
+              <Play className="btn-icon" />
+              Resume
+            </>
+          ) : isRunning ? (
+            <>
+              <Pause className="btn-icon" />
+              Pause
+            </>
+          ) : (
+            <>
+              <Play className="btn-icon" />
+              Start
+            </>
+          )}
+        </button>
+        {(isRunning || isPaused) && (
+          <button onClick={onReset} className="control-button reset-button">
+            <RotateCcw className="btn-icon" />
+            Reset
+          </button>
+        )}
+      </div>
+
+      {/* Speed Slider */}
+      <div className="speed-slider-group">
+        <label className="control-label">Animation Speed:</label>
+        <input
+          type="range"
+          min="1"
+          max="10"
+          value={animationSpeed}
+          onChange={(e) => onSpeedChange([parseInt(e.target.value)])}
+          className="speed-slider"
+        />
+        <span className="speed-value">{animationSpeed}x</span>
+      </div>
+
+      {/* Statistics */}
+      <div className="stats-container">
+        <div className="stat-item">
+          <span className="stat-label">Comparisons:</span>
+          <span className="stat-value stat-value-cyan">{comparisons}</span>
         </div>
-
-        {/* Statistics */}
-        <div className="stats-container">
-          <div className="stat-item">
-            <span className="stat-label">Comparisons:</span>
-            <span className="stat-value stat-value-cyan">{comparisons}</span>
-          </div>
-          <div className="stat-divider" />
-          <div className="stat-item">
-            <span className="stat-label">Swaps:</span>
-            <span className="stat-value stat-value-pink">{swaps}</span>
-          </div>
+        <div className="stat-divider" />
+        <div className="stat-item">
+          <span className="stat-label">Swaps:</span>
+          <span className="stat-value stat-value-pink">{swaps}</span>
         </div>
       </div>
     </div>

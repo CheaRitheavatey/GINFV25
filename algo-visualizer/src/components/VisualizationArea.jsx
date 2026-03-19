@@ -16,16 +16,26 @@ export function VisualizationArea({ array, highlightedIndices }) {
               key={index}
               className="viz-bar-wrapper"
             >
-              <div
-                className={`viz-bar ${isHighlighted ? 'viz-bar-highlighted' : 'viz-bar-default'}`}
-                style={{
-                  height: `${heightPercent}%`,
-                  minHeight: '20px',
+              <div 
+                className="viz-bar-track" 
+                style={{ 
+                  flex: 1, 
+                  width: '100%', 
+                  display: 'flex', 
+                  alignItems: 'flex-end' 
                 }}
               >
-                {isHighlighted && (
-                  <div className="viz-bar-highlight-overlay" />
-                )}
+                <div
+                  className={`viz-bar ${isHighlighted ? 'viz-bar-highlighted' : 'viz-bar-default'}`}
+                  style={{
+                    height: `${heightPercent}%`,
+                    minHeight: '20px',
+                  }}
+                >
+                  {isHighlighted && (
+                    <div className="viz-bar-highlight-overlay" />
+                  )}
+                </div>
               </div>
               <span className="viz-bar-value">{value}</span>
             </div>
