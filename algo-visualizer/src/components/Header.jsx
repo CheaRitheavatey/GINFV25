@@ -1,8 +1,12 @@
 export const Header = () => {
     return (
-        <header>
-            <h1>Algorithm Visualizer</h1>
-            <p>Visualize sorting algorithms</p>
+        <header className="header">
+          <h1 className="title">
+            Algorithm Visualizer
+          </h1>
+          <p className="subtitle">
+            Visualize sorting algorithms in real-time
+          </p>
         </header>
     )
 }

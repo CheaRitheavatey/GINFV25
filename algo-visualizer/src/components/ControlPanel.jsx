@@ -1,95 +1,131 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./sub_components/Select";
-import { Pause, Play, RotateCw, Shuffle } from "lucide-react";
-import { Slider } from "./sub_components/slider"; 
+import { Play, Shuffle, Pause, RotateCcw, ChevronDown } from 'lucide-react';
+import { useState } from 'react';
 
-function ControlPanel({
-  selectedAlgo,
-  onChangeSelectedAlgo,
-  isRunning,
-  isPause,
+export function ControlPanel({
+  selectedAlgorithm,
+  onAlgorithmChange,
   onGenerateArray,
   onStart,
   onReset,
   animationSpeed,
-  onSpeedChange
+  onSpeedChange,
+  comparisons,
+  swaps,
+  isRunning,
+  isPaused,
 }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const algorithms = [
+    { value: 'bubble', label: 'Bubble Sort' },
+    { value: 'quick', label: 'Quick Sort' },
+    { value: 'merge', label: 'Merge Sort' },
+    { value: 'insertion', label: 'Insertion Sort' },
+    { value: 'selection', label: 'Selection Sort' },
+  ];
+
+  const selectedLabel = algorithms.find(a => a.value === selectedAlgorithm)?.label || 'Bubble Sort';
+
   return (
-    <>
-      {/* dropdown for select algo */}
-      <div>
-        <label>Algorithm:</label>
-        <Select
-          value={selectedAlgo}
-          onValueChange={onChangeSelectedAlgo}
-          disabled={isRunning} // fixed prop name
-        >
-          <SelectTrigger> {/* removed empty className */}
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent> {/* removed empty className */}
-            <SelectItem value="bubble">Bubble Sort</SelectItem>
-            <SelectItem value="quick">Quick Sort</SelectItem>
-            <SelectItem value="merge">Merge Sort</SelectItem>
-            <SelectItem value="insertion">Insertion Sort</SelectItem>
-            <SelectItem value="selection">Selection Sort</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
+    <div className="control-panel">
+      <div className="control-panel-inner">
+        {/* Algorithm Selector */}
+        <div className="control-group">
+          <label className="control-label">Algorithm:</label>
+          <div className="custom-select">
+            <button
+              onClick={() => !isRunning && setIsOpen(!isOpen)}
+              disabled={isRunning}
+              className="custom-select-trigger"
+            >
+              {selectedLabel}
+              <ChevronDown className="custom-select-icon" />
+            </button>
+            {isOpen && !isRunning && (
+              <>
+                <div className="custom-select-overlay" onClick={() => setIsOpen(false)} />
+                <div className="custom-select-dropdown">
+                  {algorithms.map((algo) => (
+                    <button
+                      key={algo.value}
+                      onClick={() => {
+                        onAlgorithmChange(algo.value);
+                        setIsOpen(false);
+                      }}
+                      className="custom-select-item"
+                    >
+                      {algo.label}
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
 
-      {/* generate button and play button */}
-      <div>
-        {/* generate button */}
-        <button onClick={onGenerateArray} disabled={isRunning}>
-          <Shuffle /> {/* removed className */}
-          Generate New Array
-        </button>
-
-        {/* start button */}
-        <button onClick={onStart}>
-          {isPause ? (
-            <>
-              <Play />
-              Resume
-            </>
-          ) : isRunning ? (
-            <>
-              <Pause />
-              Pause
-            </>
-          ) : (
-            <>
-              <Play />
-              Start
-            </>
-          )}
-        </button>
-
-        {/* reset button */}
-        {(isRunning || isPause) && (
-          <button onClick={onReset}>
-            <RotateCw />
-            Reset
+        {/* Control Buttons */}
+        <div className="button-group">
+          <button
+            onClick={onGenerateArray}
+            disabled={isRunning}
+            className="btn btn-generate"
+          >
+            <Shuffle className="btn-icon" />
+            Generate New Array
           </button>
-        )}
-      </div>
+          <button onClick={onStart} className="btn btn-start">
+            {isPaused ? (
+              <>
+                <Play className="btn-icon" />
+                Resume
+              </>
+            ) : isRunning ? (
+              <>
+                <Pause className="btn-icon" />
+                Pause
+              </>
+            ) : (
+              <>
+                <Play className="btn-icon" />
+                Start
+              </>
+            )}
+          </button>
+          {(isRunning || isPaused) && (
+            <button onClick={onReset} className="btn btn-reset">
+              <RotateCcw className="btn-icon" />
+              Reset
+            </button>
+          )}
+        </div>
 
-      {/* slider for speed */}
-      <div className="flex items-center gap-3 flex-1 min-w-[200px]">
-          <label className="text-sm font-medium text-slate-300 whitespace-nowrap">
-            Animation Speed:
-          </label>
+        {/* Speed Slider */}
+        <div className="speed-slider-group">
+          <label className="control-label">Animation Speed:</label>
           <input
             type="range"
             min="1"
             max="10"
             value={animationSpeed}
             onChange={(e) => onSpeedChange([parseInt(e.target.value)])}
-            className="flex-1 h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-cyan-400 [&::-webkit-slider-thumb]:cursor-pointer"
+            className="speed-slider"
           />
-          <span className="text-xs font-mono text-slate-400 w-8">{animationSpeed}x</span>
+          <span className="speed-value">{animationSpeed}x</span>
         </div>
-    </>
+
+        {/* Statistics */}
+        <div className="stats-container">
+          <div className="stat-item">
+            <span className="stat-label">Comparisons:</span>
+            <span className="stat-value stat-value-cyan">{comparisons}</span>
+          </div>
+          <div className="stat-divider" />
+          <div className="stat-item">
+            <span className="stat-label">Swaps:</span>
+            <span className="stat-value stat-value-pink">{swaps}</span>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
-
-export default ControlPanel;
