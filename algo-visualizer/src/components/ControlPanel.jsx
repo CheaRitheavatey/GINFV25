@@ -1,10 +1,15 @@
 import { SelectContent, SelectItem, SelectTrigger, SelectValue } from "@radix-ui/react-select"
 import { Select } from "./sub_components/Select"
+import { Pause, Play, RotateCw, Shuffle, Sliders } from "lucide-react"
 
 function ControlPanel({
     selectedAlgo,
     onChangeSelectedAlgo,
-    isRunning
+    isRunning,
+    isPause,
+    onGenerateArray,
+    onStart,
+    onReset
 }) {
     return (
         <>
@@ -25,6 +30,52 @@ function ControlPanel({
                     <SelectItem value="selection">Selection Sort</SelectItem>
                 </SelectContent>
             </Select>
+        </div>
+
+        {/* generate button and play button */}
+        <div>
+            {/* generate button */}
+            <button
+            onClick={onGenerateArray}
+            disabled={isRunning}
+            className="">
+                {/* shuffle icon */}
+                <Shuffle className="w-2 h-2 mr-2"></Shuffle>
+                Generate New Array
+            </button>
+
+            {/* start button */}
+            <button
+            onClick={onStart}
+            className="">
+                {isPause ? (
+                    <>
+                    <Play></Play>
+                    Resume
+                    </>
+                ) : isRunning ? (
+                    <>
+                    <Pause></Pause>
+                    Pause
+                    </>
+                ): (
+                    <>
+                    <Play></Play>
+                    Start
+                    </>
+                )}
+            </button>
+
+            {/* reset button show */}
+            {(isRunning || isPause) && (
+                <button
+                onClick={onReset}
+                className="">
+                    {/* icon reset circle */}
+                    <RotateCw></RotateCw>
+                    Reset
+                </button>
+            )}
         </div>
         </>
     )
