@@ -1,6 +1,5 @@
-import { SelectContent, SelectItem, SelectTrigger, SelectValue } from "@radix-ui/react-select"
-import { Select } from "./sub_components/Select"
-import { Pause, Play, RotateCw, Shuffle, Sliders } from "lucide-react"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./sub_components/Select"
+import { Pause, Play, RotateCw, Shuffle } from "lucide-react"
 
 function ControlPanel({
     selectedAlgo,
