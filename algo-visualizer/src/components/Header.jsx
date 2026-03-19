@@ -1,6 +1,9 @@
-const Header = () => {
+export const Header = () => {
     return (
-        <div className="div">Algorithm Visualizer</div>
+        <header>
+            <h1>Algorithm Visualizer</h1>
+            <p>Visualize sorting algorithms</p>
+        </header>
     )
 }
 export default Header;
