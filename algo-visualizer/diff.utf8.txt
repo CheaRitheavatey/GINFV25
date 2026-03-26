@@ -1,0 +1,253 @@
+﻿diff --git a/algo-visualizer/src/App.css b/algo-visualizer/src/App.css
+index 2110665..9d94288 100644
+--- a/algo-visualizer/src/App.css
++++ b/algo-visualizer/src/App.css
+@@ -409,78 +409,112 @@
+ 
+ .code-panel-container {
+   height: 100%;
+-  border-radius: 1rem; /* rounded-2xl */
+-  background-color: rgba(15, 23, 42, 0.5); /* bg-slate-900/50 */
+-  backdrop-filter: blur(24px); /* backdrop-blur-xl */
+-  border: 1px solid rgba(51, 65, 85, 0.5); /* border-slate-700/50 */
+-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* shadow-2xl */
++  border-radius: 1rem;
++  /* rounded-2xl */
++  background-color: rgba(15, 23, 42, 0.5);
++  /* bg-slate-900/50 */
++  backdrop-filter: blur(24px);
++  /* backdrop-blur-xl */
++  border: 1px solid rgba(51, 65, 85, 0.5);
++  /* border-slate-700/50 */
++  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
++  /* shadow-2xl */
+   overflow: hidden;
+   display: flex;
+   flex-direction: column;
+ }
+ 
+ .code-panel-header {
+-  padding: 1rem 1.5rem; /* px-6 py-4 */
+-  border-bottom: 1px solid rgba(51, 65, 85, 0.5); /* border-b border-slate-700/50 */
+-  background-color: rgba(30, 41, 59, 0.3); /* bg-slate-800/30 */
++  padding: 1rem 1.5rem;
++  /* px-6 py-4 */
++  border-bottom: 1px solid rgba(51, 65, 85, 0.5);
++  /* border-b border-slate-700/50 */
++  background-color: rgba(30, 41, 59, 0.3);
++  /* bg-slate-800/30 */
+ }
+ 
+ .code-panel-title {
+-  font-size: 0.875rem; /* text-sm */
+-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; /* font-mono */
+-  color: #94a3b8; /* text-slate-400 */
++  font-size: 0.875rem;
++  /* text-sm */
++  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
++  /* font-mono */
++  color: #94a3b8;
++  /* text-slate-400 */
+   margin: 0;
+ }
+ 
+ .code-panel-content {
+-  padding: 1.5rem; /* p-6 */
+-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; /* font-mono */
+-  font-size: 0.875rem; /* text-sm */
+-  overflow-y: auto; /* overflow-auto */
++  padding: 1.5rem;
++  /* p-6 */
++  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
++  /* font-mono */
++  font-size: 0.875rem;
++  /* text-sm */
++  overflow-y: auto;
++  /* overflow-auto */
+   flex: 1;
+-  max-height: 500px; /* max-h-[500px] */
++  max-height: 500px;
++  /* max-h-[500px] */
+ }
+ 
+ .code-line {
+   display: flex;
+-  align-items: center; /* items-center */
+-  padding: 0.375rem 0; /* py-1.5 */
+-  transition: all 0.3s ease; /* transition-all duration-300 */
+-  border-radius: 0.375rem; /* rounded-md */
++  align-items: center;
++  /* items-center */
++  padding: 0.375rem 0;
++  /* py-1.5 */
++  transition: all 0.3s ease;
++  /* transition-all duration-300 */
++  border-radius: 0.375rem;
++  /* rounded-md */
+ }
+ 
+ .code-line-highlighted {
+-  background-color: rgba(6, 182, 212, 0.2); /* bg-cyan-500/20 */
+-  border-left: 4px solid #22d3ee; /* border-l-4 border-cyan-400 */
+-  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3); /* shadow-[0_0_20px_rgba(34,211,238,0.3)] */
+-  padding-left: 0.5rem; /* pl-2 */
++  background-color: rgba(6, 182, 212, 0.2);
++  /* bg-cyan-500/20 */
++  border-left: 4px solid #22d3ee;
++  /* border-l-4 border-cyan-400 */
++  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
++  /* shadow-[0_0_20px_rgba(34,211,238,0.3)] */
++  padding-left: 0.5rem;
++  /* pl-2 */
+ }
+ 
+ .code-line:not(.code-line-highlighted) {
+-  padding-left: 0.75rem; /* pl-3 */
++  padding-left: 0.75rem;
++  /* pl-3 */
+ }
+ 
+ .code-line-number {
+-  color: #64748b; /* text-slate-500 */
+-  width: 2rem; /* w-8 */
+-  flex-shrink: 0; /* flex-shrink-0 */
+-  text-align: right; /* text-right */
+-  margin-right: 1rem; /* mr-4 */
+-  user-select: none; /* select-none */
++  color: #64748b;
++  /* text-slate-500 */
++  width: 2rem;
++  /* w-8 */
++  flex-shrink: 0;
++  /* flex-shrink-0 */
++  text-align: right;
++  /* text-right */
++  margin-right: 1rem;
++  /* mr-4 */
++  user-select: none;
++  /* select-none */
+ }
+ 
+ 
+ /* Syntax highlighting */
+ .code-text {
+-  color: #cbd5e1; /* text-slate-300 */
++  color: #cbd5e1;
++  /* text-slate-300 */
+ }
+ 
+ .code-keyword {
+-  color: #f472b6; /* text-[#f472b6] */
++  color: #f472b6;
++  /* text-[#f472b6] */
+ }
+ 
+ .code-function {
+-  color: #4ade80; /* text-[#4ade80] */
++  color: #4ade80;
++  /* text-[#4ade80] */
+ }
+ 
+ /* CodePanel component */
+diff --git a/algo-visualizer/src/components/VisualizationArea.jsx b/algo-visualizer/src/components/VisualizationArea.jsx
+index de2b3d2..9a81fe2 100644
+--- a/algo-visualizer/src/components/VisualizationArea.jsx
++++ b/algo-visualizer/src/components/VisualizationArea.jsx
+@@ -16,16 +16,26 @@ export function VisualizationArea({ array, highlightedIndices }) {
+               key={index}
+               className="viz-bar-wrapper"
+             >
+-              <div
+-                className={`viz-bar ${isHighlighted ? 'viz-bar-highlighted' : 'viz-bar-default'}`}
+-                style={{
+-                  height: `${heightPercent}%`,
+-                  minHeight: '20px',
++              <div 
++                className="viz-bar-track" 
++                style={{ 
++                  flex: 1, 
++                  width: '100%', 
++                  display: 'flex', 
++                  alignItems: 'flex-end' 
+                 }}
+               >
+-                {isHighlighted && (
+-                  <div className="viz-bar-highlight-overlay" />
+-                )}
++                <div
++                  className={`viz-bar ${isHighlighted ? 'viz-bar-highlighted' : 'viz-bar-default'}`}
++                  style={{
++                    height: `${heightPercent}%`,
++                    minHeight: '20px',
++                  }}
++                >
++                  {isHighlighted && (
++                    <div className="viz-bar-highlight-overlay" />
++                  )}
++                </div>
+               </div>
+               <span className="viz-bar-value">{value}</span>
+             </div>
+diff --git a/algo-visualizer/src/components/sub_components/utils.jsx b/algo-visualizer/src/components/sub_components/utils.jsx
+deleted file mode 100644
+index e7a53a5..0000000
+--- a/algo-visualizer/src/components/sub_components/utils.jsx
++++ /dev/null
+@@ -1,8 +0,0 @@
+-import {twMerge} from "tailwind-merge"
+-import {clsx} from 'clsx'
+-
+-function cn(...input) {
+-    return twMerge(clsx(input))
+-}
+-
+-export {cn}
+\ No newline at end of file
+diff --git a/algo-visualizer/src/index.css b/algo-visualizer/src/index.css
+index e7f5914..29b73fc 100644
+--- a/algo-visualizer/src/index.css
++++ b/algo-visualizer/src/index.css
+@@ -1,3 +1,8 @@
++*,
++*::before,
++*::after {
++  box-sizing: border-box;
++}
+ 
+ :root {
+   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+@@ -19,6 +24,7 @@ a {
+   color: #646cff;
+   text-decoration: inherit;
+ }
++
+ a:hover {
+   color: #535bf2;
+ }
+@@ -47,9 +53,11 @@ button {
+   cursor: pointer;
+   transition: border-color 0.25s;
+ }
++
+ button:hover {
+   border-color: #646cff;
+ }
++
+ button:focus,
+ button:focus-visible {
+   outline: 4px auto -webkit-focus-ring-color;
+@@ -60,10 +68,12 @@ button:focus-visible {
+     color: #213547;
+     background-color: #ffffff;
+   }
++
+   a:hover {
+     color: #747bff;
+   }
++
+   button {
+     background-color: #f9f9f9;
+   }
+-}
++}
+\ No newline at end of file
