@@ -1,0 +1,40 @@
+idea: meal generator but struggling version or for students
+
+problem: students/busy ppl dont know what to cook with LIMITED budget and ingredient
+
+feature:
+1. input ingredient
+2. input budget
+
+---> generate recipe
+
+account user
+
+flow:
+login --> enter ingredient + budget (optional) --> result (have detail how to cook, time, cost) 
+result can be filter
+
+db:
+user:
+- id
+- name
+- email
+- password
+
+recipe:
+- id
+- title
+- ingredient_id (1-many)
+- step (how to)
+- time
+
+ingredient:
+- id
+- name
+- category_id (1-1)
+
+category:
+- id
+- fruit
+- vegetable
+- ...
