@@ -58,6 +58,41 @@ class RecipeModel {
             throw error;
         }
     }
+
+    // using transcation cuz we dont want half fail or half recipe
+    static async createRecipe(title, instruction, prep_time, cost, ingredient_array) {
+        const client = await db.pool.connect()
+
+        try {
+            await client.query('BEGIN')
+
+            // insert new recipe into db
+            const recipeQuery = `INSERT INTO recipe (title, instruction, prep_time, cost)
+            VALUES ($1, $2, $3, $4) RETURNING id;`
+
+            const recipeRes = await client.query(recipeQuery, [title,instruction, prep_time, cost])
+            const newRecipeId = recipeRes.rows[0].id
+
+            // loop through ingredent array and insert into recipe ingreident
+            const ingredientQuery = `
+            INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity) 
+            VALUES ($1, $2, $3);`
+
+            for (const i of ingredient_array) {
+                await client.query(ingredientQuery, [newRecipeId,i.id, i.quantity])
+            }
+
+        //     end this transcation
+            await client.query('COMMIT')
+            return newRecipeId
+        } catch (e) {
+            await client.query('ROLLBACK')
+            throw e
+        } finally {
+            client.release()
+
+        }
+    }
 }
 
 module.exports = RecipeModel;

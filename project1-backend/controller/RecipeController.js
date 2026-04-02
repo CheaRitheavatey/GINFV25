@@ -58,6 +58,32 @@ class RecipeController {
         }
     }
 
+    static async addRecipe(req, res) {
+        try {
+            const {title, instruction, prep_time, cost, ingredients} = req.body
+
+            if (!title || !instruction || !ingredients.length === 0 ) {
+                return res.status(400).json({
+                    success: false,
+                    message: 'missing required fields'
+                })
+            }
+
+            const newRecipeId = await RecipeModel.createRecipe(title, instruction, prep_time,cost,ingredients)
+            res.status(200).json({
+                success: true,
+                message: 'Recipe created successfully',
+                recipeId : newRecipeId
+            })
+        } catch (e) {
+            console.error(e)
+            res.status(500).json({
+                success: false,
+                message: 'server error: while creating recipe'
+            })
+        }
+    }
+
 }
 
 module.exports = RecipeController

@@ -19,6 +19,9 @@ app.use('/api/ingredient', ingredientRoute)
 // api/recipe for all recipes
 app.use('/api/recipe', recipeRoute)
 
+// auth part
+const authRoute = require('./route/authRoute')
+app.use('/api/auth', authRoute)
 //error handle
 app.use((req, res) => {
     res.status(404).json({

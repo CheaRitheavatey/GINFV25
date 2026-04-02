@@ -1,4 +1,4 @@
-const db = require('connectDB')
+const db = require('../connectDB')
 
 class UserModel {
     static async findByEmail(email) {
