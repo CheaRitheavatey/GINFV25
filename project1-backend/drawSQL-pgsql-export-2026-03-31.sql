@@ -104,8 +104,8 @@ INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity) VALUES
 
 -- Users sample
 INSERT INTO users (first_name, last_name, email, password) VALUES
-('John', 'Doe', 'john@example.com', 'hashedpassword123'),
-('Jane', 'Smith', 'jane@example.com', 'hashedpassword456');
+('John', 'Doe', 'john@example.com', 'password123'),
+('Jane', 'Smith', 'jane@example.com', 'password456');
 
 -- Favorites sample
 INSERT INTO favorites (user_id, recipe_id) VALUES
