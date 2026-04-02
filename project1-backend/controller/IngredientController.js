@@ -1,0 +1,3 @@
+class IngredientController {
+    // get request
+}
