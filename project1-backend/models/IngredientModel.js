@@ -18,7 +18,7 @@ class IngredientModel {
             return result.rows
         } catch (e) {
             console.error('Error fetching ingredients: ', e)
-            throw error
+            throw e
         }
     }
 }
