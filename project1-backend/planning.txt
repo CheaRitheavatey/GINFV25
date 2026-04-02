@@ -38,3 +38,6 @@ category:
 - fruit
 - vegetable
 - ...
+
+
+my goal is to build it in mvc model
