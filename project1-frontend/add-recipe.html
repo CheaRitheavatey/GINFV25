@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New Recipe</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Create a New Recipe</h1>
+
+      <div class="split-layout">
+        <!-- LEFT PANEL: The Form -->
+        <div class="card">
+          <form id="add-recipe-form">
+            <div class="form-group">
+              <label>Recipe Title</label>
+              <input type="text" placeholder="e.g., Tomato Omelette" />
+            </div>
+
+            <div class="split-layout" style="gap: 1rem; margin-bottom: 0">
+              <div class="form-group" style="flex: 1">
+                <label>Prep Time (mins)</label>
+                <input type="number" placeholder="15" />
+              </div>
+              <div class="form-group" style="flex: 1">
+                <label>Estimated Cost ($)</label>
+                <input type="number" step="0.10" placeholder="3.50" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Instructions</label>
+              <textarea placeholder="1. Chop tomatoes..."></textarea>
+            </div>
+
+            <hr style="border: 1px solid #eee; margin: 1.5rem 0" />
+
+            <h3>Add Ingredients</h3>
+            <div class="split-layout" style="gap: 1rem; margin-bottom: 1rem">
+              <div class="form-group" style="flex: 2">
+                <label>Select Ingredient</label>
+                <select>
+                  <option value="1">Tomato</option>
+                  <option value="2">Egg</option>
+                  <option value="4">Cheese</option>
+                </select>
+              </div>
+              <div class="form-group" style="flex: 1">
+                <label>Quantity</label>
+                <input type="text" placeholder="e.g., 2 tbsp" />
+              </div>
+            </div>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              style="margin-bottom: 2rem"
+            >
+              + Add to Recipe
+            </button>
+
+            <button type="submit" class="btn btn-primary">
+              Save Entire Recipe
+            </button>
+          </form>
+        </div>
+
+        <!-- RIGHT PANEL: Visual Preview -->
+        <div class="card card-peach">
+          <h2>Ingredients Preview</h2>
+          <p style="margin-bottom: 1.5rem; color: var(--plum)">
+            Items will appear here as you add them.
+          </p>
+
+          <div class="ingredient-list">
+            <!-- added ingredient -->
+            <div class="ingredient-item">
+              <div class="ingredient-icon">🥚</div>
+              <div class="ingredient-details">
+                <h4>Egg</h4>
+                <p>2 large</p>
+              </div>
+            </div>
+
+            <!-- added ingredient -->
+            <div class="ingredient-item">
+              <div class="ingredient-icon">🧀</div>
+              <div class="ingredient-details">
+                <h4>Cheese</h4>
+                <p>3 tbsp shredded</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
