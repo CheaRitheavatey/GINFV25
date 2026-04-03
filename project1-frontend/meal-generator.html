@@ -5,6 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meal Generator</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Styling for the visual ingredient tags */
+      .kitchen-tag {
+        background-color: var(--green);
+        color: var(--white);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+      .remove-tag {
+        cursor: pointer;
+        color: var(--white);
+        font-weight: bold;
+        margin-left: 5px;
+      }
+      .remove-tag:hover {
+        color: var(--plum);
+      }
+    </style>
   </head>
   <body>
     <nav class="navbar">
@@ -15,94 +38,66 @@
         <button id="logout-btn" class="logout-btn">Logout</button>
       </div>
     </nav>
+
     <div class="container">
       <h1 style="text-align: center; margin-bottom: 0.5rem">
         What's in your kitchen?
       </h1>
       <p style="text-align: center; margin-bottom: 3rem">
-        Select the ingredients you have, and we'll tell you what you can cook!
+        Select ingredients from the categories to build your pantry.
       </p>
 
-      <!-- Ingredients Selection Form -->
-      <form id="generator-form">
-        <div class="categories-grid">
-          <!-- Category: Vegetables -->
-          <div class="category-card">
-            <h3>Vegetables</h3>
-            <label class="checkbox-label"
-              ><input type="checkbox" value="1" /> 🍅 Tomato</label
-            >
-            <label class="checkbox-label"
-              ><input type="checkbox" value="8" /> 🧅 Onion</label
-            >
-            <label class="checkbox-label"
-              ><input type="checkbox" value="9" /> 🫑 Bell Pepper</label
-            >
+      <div class="card">
+        <div
+          class="split-layout"
+          style="align-items: flex-end; margin-bottom: 1.5rem"
+        >
+          <div class="form-group" style="flex: 1; margin-bottom: 0">
+            <label>Ingredients (Grouped by Category)</label>
+            <select id="kitchen-dropdown">
+              <!-- JS will populate <optgroup> categories here -->
+            </select>
           </div>
+          <button
+            type="button"
+            id="add-to-kitchen-btn"
+            class="btn btn-secondary"
+            style="width: auto; padding: 0.8rem 1.5rem"
+          >
+            + Add to Kitchen
+          </button>
+        </div>
 
-          <!-- Category: Dairy/Eggs -->
-          <div class="category-card">
-            <h3>Dairy & Eggs</h3>
-            <label class="checkbox-label"
-              ><input type="checkbox" value="2" /> 🥚 Egg</label
-            >
-            <label class="checkbox-label"
-              ><input type="checkbox" value="4" /> 🧀 Cheese</label
-            >
-          </div>
-
-          <!-- Category: Pantry -->
-          <div class="category-card">
-            <h3>Pantry</h3>
-            <label class="checkbox-label"
-              ><input type="checkbox" value="3" /> 🍚 Rice</label
-            >
-            <label class="checkbox-label"
-              ><input type="checkbox" value="6" /> 🧂 Salt</label
-            >
-          </div>
+        <!-- This is where the names of selected ingredients will appear -->
+        <div
+          id="selected-kitchen-items"
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            min-height: 40px;
+          "
+        >
+          <p style="color: gray; font-size: 0.9rem; margin: 0">
+            Your selected ingredients will appear here...
+          </p>
         </div>
 
         <button
-          type="submit"
+          type="button"
+          id="generate-btn"
           class="btn btn-primary"
           style="font-size: 1.2rem; padding: 1rem"
         >
           Generate My Meal
         </button>
-      </form>
-
-      <!-- Results Section (Mockup of what appears after clicking Generate) -->
-      <div class="results-section">
-        <h2>Your Matches</h2>
-
-        <div class="recipe-result-card">
-          <h3>Tomato Omelette</h3>
-          <div class="recipe-meta">
-            <span>⏱ Prep: 10 mins</span>
-            <span>💰 Cost: $2.50</span>
-            <span>✅ Matched: 3 ingredients</span>
-          </div>
-          <p>
-            <strong>Instructions:</strong> 1. Chop tomato. 2. Beat eggs. 3. Mix
-            and fry. 4. Serve hot.
-          </p>
-        </div>
-
-        <div class="recipe-result-card">
-          <h3>Fried Rice</h3>
-          <div class="recipe-meta">
-            <span>⏱ Prep: 20 mins</span>
-            <span>💰 Cost: $3.00</span>
-            <span>✅ Matched: 2 ingredients</span>
-          </div>
-          <p>
-            <strong>Instructions:</strong> 1. Cook rice. 2. Chop vegetables. 3.
-            Fry rice with veggies and egg. 4. Serve.
-          </p>
-        </div>
       </div>
+
+      <!-- Results Section -->
+      <div class="results-section" id="results-container"></div>
     </div>
+
     <script src="nav.js"></script>
     <script src="generator.js"></script>
   </body>

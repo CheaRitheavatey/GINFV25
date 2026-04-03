@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', loadDropdown);
 // fetch ingredients to populate the dropdown
 async function loadDropdown() {
   try {
-    const res = await fetch('http://localhost:3000/api/ingredients');
+    const res = await fetch('http://localhost:3000/api/ingredient');
     const data = await res.json();
     
     if (data.success) {
@@ -86,7 +86,7 @@ document.getElementById('add-recipe-form').addEventListener('submit', async (e) 
   const payload = { title, prep_time, cost, instruction, ingredients: ingredientsPayload };
 
   try {
-    const res = await fetch('http://localhost:3000/api/recipes', {
+    const res = await fetch('http://localhost:3000/api/recipe', {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
