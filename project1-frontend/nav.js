@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const token = localStorage.getItem('token');
   
-  // Only redirect if they are NOT on the auth.html page already
+  // redirect if they are NOT on the auth.html page already
   if (!token && !window.location.pathname.includes('auth.html')) {
     alert('You must be logged in to view this page.');
     window.location.href = 'auth.html';

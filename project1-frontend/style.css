@@ -7,7 +7,6 @@
     --dark-pink: #C65B7C;
     --plum: #5B3758;
     --bg-light: #FFF9F8;
-    /* A very soft tint of peach for the background */
     --white: #FFFFFF;
 }
 
@@ -45,7 +44,7 @@ h3 {
 .nav-brand {
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--green);
+    color: var(--dark-pink);
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -170,23 +169,14 @@ textarea {
     text-align: center;
 }
 
-.btn-primary {
+.btn-primary , .btn-secondary{
     background-color: var(--coral);
     color: var(--white);
 }
 
-.btn-primary:hover {
+.btn-primary:hover , .btn-secondary:hover {
     background-color: var(--dark-pink);
     transform: translateY(-2px);
-}
-
-.btn-secondary {
-    background-color: var(--green);
-    color: var(--white);
-}
-
-.btn-secondary:hover {
-    background-color: #6a9c79;
 }
 
 /* --- Ingredient Preview List (Add Recipe Page) --- */

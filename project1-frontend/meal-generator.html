@@ -6,9 +6,8 @@
     <title>Meal Generator</title>
     <link rel="stylesheet" href="style.css" />
     <style>
-      /* Styling for the visual ingredient tags */
       .kitchen-tag {
-        background-color: var(--green);
+        background-color: var(--peach);
         color: var(--white);
         padding: 0.5rem 1rem;
         border-radius: 20px;
@@ -31,7 +30,7 @@
   </head>
   <body>
     <nav class="navbar">
-      <a href="meal-generator.html" class="nav-brand">🍽️ MealGenie</a>
+      <a href="meal-generator.html" class="nav-brand">MealGenie</a>
       <div class="nav-links">
         <a href="meal-generator.html" class="active">Generate Meal</a>
         <a href="add-recipe.html">Add Recipe</a>
@@ -54,9 +53,7 @@
         >
           <div class="form-group" style="flex: 1; margin-bottom: 0">
             <label>Ingredients (Grouped by Category)</label>
-            <select id="kitchen-dropdown">
-              <!-- JS will populate <optgroup> categories here -->
-            </select>
+            <select id="kitchen-dropdown"></select>
           </div>
           <button
             type="button"
@@ -68,7 +65,7 @@
           </button>
         </div>
 
-        <!-- This is where the names of selected ingredients will appear -->
+        <!-- names of selected ingredients will appear -->
         <div
           id="selected-kitchen-items"
           style="
