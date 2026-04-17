@@ -1,5 +1,4 @@
-// generator.js
-let kitchenIngredients = []; // Array to store IDs and names of what the user selected
+let kitchenIngredients = []; // array to store IDs and names of what the user selected
 
 document.addEventListener('DOMContentLoaded', loadIngredientsDropdown);
 
@@ -12,14 +11,14 @@ async function loadIngredientsDropdown() {
       const dropdown = document.getElementById('kitchen-dropdown');
       dropdown.innerHTML = ''; 
 
-      // Group ingredients by category for the dropdown
+      // group ingredients by category for the dropdown
       const categories = {};
       data.data.forEach(ing => {
         if (!categories[ing.category_name]) categories[ing.category_name] = [];
         categories[ing.category_name].push(ing);
       });
 
-      // Create an <optgroup> for each category
+      // create an <optgroup> for each category
       for (const [catName, items] of Object.entries(categories)) {
         const optgroup = document.createElement('optgroup');
         optgroup.label = catName; // e.g., "Vegetable", "Meat"
@@ -39,13 +38,13 @@ async function loadIngredientsDropdown() {
   }
 }
 
-// Handle adding an item to the screen
+// handle adding an item to the screen
 document.getElementById('add-to-kitchen-btn').addEventListener('click', () => {
   const dropdown = document.getElementById('kitchen-dropdown');
   const id = parseInt(dropdown.value);
   const name = dropdown.options[dropdown.selectedIndex].text;
 
-  // Prevent adding the exact same ingredient twice
+  // prevent adding the exact same ingredient twice
   if (kitchenIngredients.some(item => item.id === id)) {
     return; 
   }
@@ -54,7 +53,7 @@ document.getElementById('add-to-kitchen-btn').addEventListener('click', () => {
   updateKitchenScreen();
 });
 
-// Update the visual tags on the screen
+// update the visual tags on the screen
 function updateKitchenScreen() {
   const container = document.getElementById('selected-kitchen-items');
   container.innerHTML = ''; // Clear placeholder text
@@ -74,13 +73,13 @@ function updateKitchenScreen() {
   });
 }
 
-// Allows user to click 'X' to remove a tag
+// allows user to click 'X' to remove a tag
 window.removeIngredient = function(index) {
   kitchenIngredients.splice(index, 1);
   updateKitchenScreen();
 };
 
-// Handle Generate Button Click
+// handle Generate Button Click
 document.getElementById('generate-btn').addEventListener('click', async () => {
   if (kitchenIngredients.length === 0) {
     return alert('Please add at least one ingredient to your kitchen first!');
