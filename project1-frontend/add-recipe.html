@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New Recipe</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="meal-generator.html" class="nav-brand">MealGenie</a>
+      <div class="nav-links">
+        <a href="meal-generator.html">Generate Meal</a>
+        <a href="add-recipe.html" class="active">Add Recipe</a>
+        <button id="logout-btn" class="logout-btn">Logout</button>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1>Create a New Recipe</h1>
+
+      <div class="split-layout">
+        <div class="card">
+          <form id="add-recipe-form">
+            <div class="form-group">
+              <label>Recipe Title</label>
+              <input
+                type="text"
+                id="recipe-title"
+                placeholder="e.g., Tomato Omelette"
+                required
+              />
+            </div>
+
+            <div class="split-layout" style="gap: 1rem; margin-bottom: 0">
+              <div class="form-group" style="flex: 1">
+                <label>Prep Time (mins)</label>
+                <input type="number" id="prep-time" placeholder="15" required />
+              </div>
+              <div class="form-group" style="flex: 1">
+                <label>Estimated Cost ($)</label>
+                <input type="number" step="0.10" id="cost" placeholder="3.50" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Instructions</label>
+              <!-- ID ADDED HERE -->
+              <textarea
+                id="instruction"
+                placeholder="1. Chop tomatoes..."
+                required
+              ></textarea>
+            </div>
+
+            <hr style="border: 1px solid #eee; margin: 1.5rem 0" />
+
+            <h3>Add Ingredients</h3>
+            <div class="split-layout" style="gap: 1rem; margin-bottom: 1rem">
+              <div class="form-group" style="flex: 2">
+                <label>Select Ingredient</label>
+                <select id="ingredient-select"></select>
+              </div>
+              <div class="form-group" style="flex: 1">
+                <label>Quantity</label>
+                <input
+                  type="text"
+                  id="quantity-input"
+                  placeholder="e.g., 2 tbsp"
+                />
+              </div>
+            </div>
+            <button
+              type="button"
+              id="add-ing-btn"
+              class="btn btn-secondary"
+              style="margin-bottom: 2rem"
+            >
+              + Add to Recipe
+            </button>
+
+            <button type="submit" class="btn btn-primary">
+              Save Entire Recipe
+            </button>
+          </form>
+        </div>
+
+        <!-- RIGHT PANEL: visual preview -->
+        <div class="card card-peach">
+          <h2>Ingredients Preview</h2>
+          <div class="ingredient-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="nav.js"></script>
+    <script src="add-recipe.js"></script>
+  </body>
+</html>

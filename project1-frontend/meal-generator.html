@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meal Generator</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .kitchen-tag {
+        background-color: var(--peach);
+        color: var(--white);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+      .remove-tag {
+        cursor: pointer;
+        color: var(--white);
+        font-weight: bold;
+        margin-left: 5px;
+      }
+      .remove-tag:hover {
+        color: var(--plum);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="meal-generator.html" class="nav-brand">MealGenie</a>
+      <div class="nav-links">
+        <a href="meal-generator.html" class="active">Generate Meal</a>
+        <a href="add-recipe.html">Add Recipe</a>
+        <button id="logout-btn" class="logout-btn">Logout</button>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 style="text-align: center; margin-bottom: 0.5rem">
+        What's in your kitchen?
+      </h1>
+      <p style="text-align: center; margin-bottom: 3rem">
+        Select ingredients from the categories to build your pantry.
+      </p>
+
+      <div class="card">
+        <div
+          class="split-layout"
+          style="align-items: flex-end; margin-bottom: 1.5rem"
+        >
+          <div class="form-group" style="flex: 1; margin-bottom: 0">
+            <label>Ingredients (Grouped by Category)</label>
+            <select id="kitchen-dropdown"></select>
+          </div>
+          <button
+            type="button"
+            id="add-to-kitchen-btn"
+            class="btn btn-secondary"
+            style="width: auto; padding: 0.8rem 1.5rem"
+          >
+            + Add to Kitchen
+          </button>
+        </div>
+
+        <!-- names of selected ingredients will appear -->
+        <div
+          id="selected-kitchen-items"
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            min-height: 40px;
+          "
+        >
+          <p style="color: gray; font-size: 0.9rem; margin: 0">
+            Your selected ingredients will appear here...
+          </p>
+        </div>
+
+        <button
+          type="button"
+          id="generate-btn"
+          class="btn btn-primary"
+          style="font-size: 1.2rem; padding: 1rem"
+        >
+          Generate My Meal
+        </button>
+      </div>
+
+      <!-- Results Section -->
+      <div class="results-section" id="results-container"></div>
+    </div>
+
+    <script src="nav.js"></script>
+    <script src="generator.js"></script>
+  </body>
+</html>
