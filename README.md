@@ -84,6 +84,8 @@ The frontend is a lightweight vanilla JS application located in the `project1-fr
 
 ![Project Screenshot](./form.png).
 
+[![Watch the video](./IMG_7023.mp4)](./IMG_7023.mp4)
+
 <video src="https://github.com/CheaRitheavatey/GINFV25/raw/main/IMG_7023.mp4" controls="controls" muted="muted" style="max-height:640px; min-height: 200px">
   Your browser does not support the video tag.
 </video>
