@@ -84,4 +84,4 @@ The frontend is a lightweight vanilla JS application located in the `project1-fr
 
 ![Project Screenshot](./form.png).
 
-[Watch the video](./IMG_7023.MOV)
+[Watch the video](./IMG_7023.mp4)
