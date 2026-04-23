@@ -89,3 +89,22 @@ The frontend is a lightweight vanilla JS application located in the `project1-fr
 <video src="https://github.com/CheaRitheavatey/GINFV25/raw/main/IMG_7023.mp4" controls="controls" muted="muted" style="max-height:640px; min-height: 200px">
   Your browser does not support the video tag.
 </video>
+
+## 7. Setup & Running Locally
+
+### 7.1 Database Initialization
+
+1.  Ensure you have PostgreSQL installed and running.
+2.  Use the provided schema script in `project1-backend/drawSQL-pgsql-export-2026-03-31.sql` to generate the schema and run data insertions.
+
+### 7.2 Backend Setup
+
+1.  Navigate into `project1-backend`. (`cd project1-backend`)
+2.  Run `npm install` to resolve dependencies.
+3.  Set up an `.env` file declaring necessary environment variables (e.g., `PORT=3000`, database connection logic, and a `JWT_SECRET` for token signing).
+4.  Launch the Express server utilizing `node server.js` (or `nodemon server.js`).
+
+### 7.3 Frontend Setup
+
+1.  Navigate into `project1-frontend`.
+2.  Access the web application navigating to the hosted port (e.g., `http://localhost:8080/auth.html`).
