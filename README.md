@@ -4,12 +4,15 @@
 
 ## 1. Overview
 
-MealGenie is a web application that allows users to find recipes based on the ingredients they have in their kitchen. It also provides functionality to register, log in, and contribute new recipes to the platform.
+MealGenie is a web application that allows users to find recipes based on the ingredients they have in their kitchen. Especially, for students who have random ingredients in their fridge and want to get rid of it. It also provides functionality to register, log in, and contribute new recipes to the platform.
 
 The project is structured into two main parts:
 
 - **project1-backend**: A Node.js and REST API connecting to a PostgreSQL database.
 - **project1-frontend**: A vanilla HTML, CSS, and JavaScript frontend.
+
+-**draft thought process + template**
+![plannnig phase](./images_and_video/planning.png).
 
 ---
 
@@ -23,6 +26,8 @@ The project is structured into two main parts:
 ---
 
 ## 3. Database Schema
+
+![database diagram](./images_and_video/db_diagram.jpg).
 
 The PostgreSQL database consists of the following tables:
 
@@ -78,17 +83,21 @@ The frontend is a lightweight vanilla JS application located in the `project1-fr
   - `nav.js`: Contains common navigation scripts, covering token removal on logout.
   - `style.css`: Uses unified CSS variables for color styling (Peach, Coral, Plum motifs), managing layout components through Flexbox/CSS-Grid for responsiveness.
 
+  ###
+
 ---
 
 ## 6. Demo Video
 
-![Project Screenshot](./form.png).
+![Project Screenshot](./images_and_video/form.png).
 
-[![Watch the video](./IMG_7023.mp4)](./IMG_7023.mp4)
+[![Watch the video](./IMG_7023.mp4)](./images_and_video/IMG_7023.mp4)
 
 <video src="https://github.com/CheaRitheavatey/GINFV25/raw/main/IMG_7023.mp4" controls="controls" muted="muted" style="max-height:640px; min-height: 200px">
   Your browser does not support the video tag.
 </video>
+
+**Note: if unable to setup locally, please refer to the above video for a demonstration of the application's functionality.**
 
 ## 7. Setup & Running Locally
 
@@ -107,4 +116,4 @@ The frontend is a lightweight vanilla JS application located in the `project1-fr
 ### 7.3 Frontend Setup
 
 1.  Navigate into `project1-frontend`.
-2.  Access the web application navigating to the hosted port (e.g., `http://localhost:8080/auth.html`).
+2.  Access the web application navigating to the hosted port (suggestion start with auth.html`).

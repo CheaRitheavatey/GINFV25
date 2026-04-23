@@ -17,7 +17,7 @@ class AuthController {
             const salt = await bcrypt.genSalt(10);
             const hashedPassword = await bcrypt.hash(password, salt);
             const newUser = await UserModel.create(first_name, last_name, email, hashedPassword);
-
+0                                                                                                           
             res.status(201).json({ success: true, data: newUser });
         } catch (error) {
             res.status(500).json({ success: false, message: 'Server error' });

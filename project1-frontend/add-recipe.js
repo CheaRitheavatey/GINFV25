@@ -43,7 +43,7 @@ document.getElementById('add-ing-btn').addEventListener('click', () => {
 
 function updatePreviewPanel() {
   const list = document.querySelector('.ingredient-list');
-  list.innerHTML = ''; // Clear mockups
+  list.innerHTML = ''; // clear mockups
   
   recipeIngredients.forEach(item => {
     // use a generic emoji or dynamic ones based on name later
